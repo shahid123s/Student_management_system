@@ -1,0 +1,20 @@
+# Ignore env files in both frontend and backend
+frontend/.env
+backend/.env
+
+# Optional: ignore all .env files in all folders
+**/.env
+
+# Node modules
+**/node_modules/
+
+# Logs
+**/logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional: ignore build artifacts
+frontend/build/
+backend/dist/

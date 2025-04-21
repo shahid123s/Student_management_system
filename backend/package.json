@@ -1,0 +1,16 @@
+{
+  "name": "student_management_system",
+  "version": "1.0.0",
+  "description": "Server side of the student management system",
+  "main": "main.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shahid",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.5.0",
+    "mongoose": "^8.13.2"
+  }
+}
