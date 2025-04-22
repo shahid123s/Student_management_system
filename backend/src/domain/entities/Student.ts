@@ -10,7 +10,8 @@ export class Student {
         public classId: number,
         public className: string,
         public rollNo: number,
-        public password: string
+        public password: string,
+        public role : string = 'student'
     ){}
 }
 

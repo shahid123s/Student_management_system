@@ -1,8 +1,10 @@
+import { LoginStudentRequestDTO } from "../../infrastructure/web/DTO/StudentDTO";
 import { Student } from "../entities/Student";
 
 export interface IStudentRepository {
     create(student: Student): Promise<Student>;
     getStudentByEmail(email: string): Promise<Student | null>;
+    validateCredentials(student: LoginStudentRequestDTO): Promise<Student | null>;
     // getStudents(): Promise<Student[]>;
     // getStudent(id: string): Promise<Student>;
     // addStudent(student: Student): Promise<void>;

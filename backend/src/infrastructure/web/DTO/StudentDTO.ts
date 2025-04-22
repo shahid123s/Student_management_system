@@ -21,5 +21,18 @@ export interface CreateStudentResponseDTO {
     phone: string;
     address: string;
     gender: string;
-    id: string;
+    id: string | null;
+}
+
+export interface LoginStudentRequestDTO {
+    email: string;
+    password: string;
+}
+
+export interface LoginStudentResponseDTO {
+    email: string;
+    name: string;
+    accessToken: string;
+    refreshToken: string;
+    id: string| null ;
 }

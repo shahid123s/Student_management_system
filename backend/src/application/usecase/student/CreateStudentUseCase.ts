@@ -29,6 +29,7 @@ export class CreateStudentUseCase {
             studentData.password,
         )
         const createdStudent = await this.studentRepository.create(student);
+        console.log(createdStudent, 'At create student use case');
         return createdStudent;
     }
 }
