@@ -5,7 +5,7 @@ import { hashPassword } from "../../../utils/password";
 export class CreateStudentUseCase {
     constructor(private studentRepository: IStudentRepository) {}
 
-    async execute(studentData: CreateStudentRequestDTO): Promise<Student> {
+    async execute(studentData: CreateStudentRequestDTO ): Promise<Student> {
         const existingStudent = await this.studentRepository.getStudentByEmail(studentData.email);
 
         if (existingStudent) {
@@ -18,12 +18,9 @@ export class CreateStudentUseCase {
         const student = new Student(
             null,
             studentData.name,
-            studentData.age,
-            studentData.gender,
-            studentData.address,
-            studentData.phone,
+            studentData.dob,
+            studentData.marks,
             studentData.email,
-            studentData.classId,
             studentData.className,
             studentData.rollNo,
             studentData.password,

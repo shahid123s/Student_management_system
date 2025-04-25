@@ -32,6 +32,7 @@ export class LoginStudentUseCase {
             accessToken: accessToken,
             refreshToken: refreshToken,
             id : student.id,
+            role: student.role
         }
 
 

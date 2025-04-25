@@ -2,7 +2,7 @@ import { Student } from "../../../../domain/entities/Student";
 import { IStudentDocument } from "../documentInterface/IStudentDocument";
 import { IStudentRepository } from "../../../../domain/repositories/IStudentRepository";
 import { StudentModel } from "../models/StudentModel";
-import { LoginStudentRequestDTO } from "../../../web/DTO/StudentDTO";
+import { LoginStudentRequestDTO, UpdateStudentRequestDTO } from "../../../web/DTO/StudentDTO";
 
 export class MongoStudentRepository implements IStudentRepository {
     
@@ -10,12 +10,9 @@ export class MongoStudentRepository implements IStudentRepository {
         return new Student(
             (document._id as unknown as string).toString(),
             document.name,
-            document.age,
-            document.gender,
-            document.address,
-            document.phone,
+            document.dob,
+            document.marks,
             document.email,
-            document.classId,
             document.className,
             document.rollNo,
             document.password,
@@ -51,4 +48,25 @@ export class MongoStudentRepository implements IStudentRepository {
         return null;
     }
 
+    async getStudents(): Promise<Student[]> {
+        const students = await StudentModel.find();
+        return students.map((student) => this.mapDocumentToEntitySafety(student));
+    }
+
+    async updateStudent(student: UpdateStudentRequestDTO): Promise<void> {
+        await StudentModel.findByIdAndUpdate(student.id, student);
+    }
+
+    async deleteStudent(id: string): Promise<void> {
+        await StudentModel.findByIdAndDelete(id);
+    }
+
+    async getStudent(id: string): Promise<Student| null> {
+
+    const student =  await StudentModel.findById(id);
+    if(student) {
+        return this.mapDocumentToEntitySafety(student);
+    }
+    return null;
+    }
 }

@@ -4,11 +4,8 @@ export interface IStudentDocument extends Document {
     name: string;
     email: string;
     password: string;
-    age: number;
-    gender: string;
-    address: string;
-    phone: string;
-    classId: number;
+    dob: Date;
+    marks: number;
     className: string;
     rollNo: number;
 }

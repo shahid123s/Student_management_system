@@ -3,7 +3,8 @@ import { config } from 'dotenv'
 import { connectToDatabase } from "../config/database";
 import { createContainer } from "./container";
 import { setupRoutes } from "./routes";
-
+import cors from 'cors'
+import morgan from 'morgan'
 
 config();
 
@@ -17,6 +18,8 @@ const startServer = async () : Promise<void> => {
 
     const container = createContainer();
 
+    app.use(cors(container.corsService.getCorsOptions()));
+    app.use(morgan('dev'));
     setupRoutes(app, container);
 
     const PORT = process.env.PORT || 3009;

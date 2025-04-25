@@ -1,30 +1,26 @@
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import Login from './components/Login';
+import Register from './components/Register';
+import StudentDashboard from './components/StudentDashboard';
+import AdminDashboard from './components/AdminDashboard';
+import AdminLogin from './components/AdminLogin';
 
-import { useState } from 'react'
-import './App.css'
-
-function App() {
-  
-  const [name, setName] = useState<string | undefined> ( undefined );
-
-  const handleHello = (name: string| undefined) => {
-    window.alert('Hello' + name)
-    
-    return 'Hello' + name
-  }
-  
- 
-  const onChange = (event:any ) => {
-    setName(event.target.value);
-  }
-
+const App = () => {
   return (
-    <>
-    <form action="" onSubmit={() => handleHello(name)}>
-      <input type="text" onChange={onChange} />
-      <button type="submit">Submit</button>
-    </form>
-    </>
-  )
-}
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/student" element={<StudentDashboard />} />
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/" element={<Navigate to="/login" />} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
+  );
+};
 
-export default App
+export default App;

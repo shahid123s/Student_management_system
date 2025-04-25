@@ -7,20 +7,18 @@ export interface CreateStudentRequestDTO {
     classId: number;
     className: string;
     phone: string;
-    address: string;
+    marks: number;
     gender: string;
+    dob : Date;
 }
 
 export interface CreateStudentResponseDTO {
     name: string;
-    age: number;
+    dob: Date;
     email: string;
     rollNo: number;
-    classId: number;
     className: string;
-    phone: string;
-    address: string;
-    gender: string;
+    marks: number;
     id: string | null;
 }
 
@@ -35,4 +33,14 @@ export interface LoginStudentResponseDTO {
     accessToken: string;
     refreshToken: string;
     id: string| null ;
+    role: string
+}
+
+
+export interface UpdateStudentRequestDTO {
+    id: string;
+    rollNo ?: number;
+    classId?: number;
+    className?: string;
+    marks?: number;
 }
