@@ -64,7 +64,7 @@ const AdminDashboard = () => {
     const [showCreateModal, setShowCreateModal] = useState(false);
 
     useEffect(() => {
-        if (!token || role !== 'admin') navigate('/login');
+        if (!token || role !== 'admin') navigate('/admin/login');
         else fetchStudents();
     }, [token, role, navigate]);
 

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Mail, Lock } from 'lucide-react';
@@ -8,8 +8,12 @@ import { adminAxiosInstance } from '../utils/axios';
 const AdminLogin = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { login } = useAuth();
+    const { token, login } = useAuth();
     const navigate = useNavigate();
+    
+    useEffect(() => {
+        if(token)  navigate('/admin');
+    },[navigate])
 
     const handleSubmit = async (e:React.FormEvent) => {
         e.preventDefault();
